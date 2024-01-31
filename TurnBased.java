@@ -134,7 +134,7 @@ public class TurnBased {
 
             switch(choice) {
                 case 1: // Farming Mode
-                    if (limiter == 0){
+                    if (limiter == 0){ // When limiter is zero
                         System.out.println("\nYou have reached the limit of the farming permit! Engage in a single battle to recover your farming permit.");
                         try {
                             Thread.sleep(3000);
@@ -195,7 +195,7 @@ public class TurnBased {
                     while (tempHP > 0 && tempEnemyHP > 0) {
                         System.out.println("\n==== TURN " + turn + " ====");
                         System.out.println("- " + name + " attacking " + enemyID[choice] + "!");
-                        tempHP -= enemy[choice][1];
+                        tempEnemyHP -= AP;  // Decreasing enemy's HP by player's AP
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
@@ -210,7 +210,7 @@ public class TurnBased {
                         }
 
                         System.out.println("- " + enemyID[choice] + " attacking " + name + "!");
-                        tempEnemyHP -= AP;
+                        tempHP -= enemy[choice][1]; // Decreasing player's HP by enemy's AP
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
@@ -232,6 +232,7 @@ public class TurnBased {
                     } else {
                         System.out.println("\nYou Lose!");
                     }
+                    
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
